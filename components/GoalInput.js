@@ -1,23 +1,27 @@
 import { useState } from 'react';
 import {View, TextInput, Button, StyleSheet, Modal, Image} from 'react-native'
 
-function GoalInput(props) {
+const GoalInput = (props) => {
     const [enteredGoalText, setEnteredGoalText] = useState("");
 
-    function goalInputHandler(enteredText) {
+    const goalInputHandler = (enteredText) => {
         setEnteredGoalText(enteredText);
-    }
+    };
 
-    function addGoalHandler() {
+    const addGoalHandler=() => {
         props.onAddGoal(enteredGoalText);
         setEnteredGoalText('');
     }
+
+    console.log('Goal input component rendered.')
 
 
     return (
         <Modal visible={props.visible} animationType='slide'>
         <View style={styles.inputContainer}>
-        <Image style={styles.image} source={require('../assets/images/goal.png')} />
+        <Image style={styles.image}
+         source={require('../assets/images/goal.png')}
+         />
         <TextInput
           style={styles.textInput}
           placeholder="Your course goal!"
